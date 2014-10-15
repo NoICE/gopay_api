@@ -7,6 +7,7 @@ module GoPay
               :paid => "PAID", :authorized => "AUTHORIZED",
               :canceled => "CANCELED", :timeouted => "TIMEOUTED",
               :refunded => "REFUNDED", :failed => "FAILED",
+              :partially_refunded => "PARTIALLY_REFUNDED",
               :call_completed => "CALL_COMPLETED", :call_failed => "CALL_FAILED",
               :unknown => "UNKNOWN"}
 
