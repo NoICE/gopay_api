@@ -3,13 +3,20 @@ require "yaml"
 module GoPay
 
   BASE_PATH = File.expand_path("../../../", __FILE__)
-  STATUSES = {:created => "CREATED", :payment_method_chosen => "PAYMENT_METHOD_CHOSEN",
-              :paid => "PAID", :authorized => "AUTHORIZED",
-              :canceled => "CANCELED", :timeouted => "TIMEOUTED",
-              :refunded => "REFUNDED", :failed => "FAILED",
-              :partially_refunded => "PARTIALLY_REFUNDED",
-              :call_completed => "CALL_COMPLETED", :call_failed => "CALL_FAILED",
-              :unknown => "UNKNOWN"}
+  STATUSES = {
+      :created => "CREATED",
+      :payment_method_chosen => "PAYMENT_METHOD_CHOSEN",
+      :paid => "PAID",
+      :authorized => "AUTHORIZED",
+      :canceled => "CANCELED",
+      :timeouted => "TIMEOUTED",
+      :refunded => "REFUNDED",
+      :partially_refunded => "PARTIALLY_REFUNDED",
+      :failed => "FAILED",
+      :call_completed => "CALL_COMPLETED",
+      :call_failed => "CALL_FAILED",
+      :unknown => "UNKNOWN"
+  }
 
   def self.configure
     yield configuration
