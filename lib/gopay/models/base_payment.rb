@@ -20,6 +20,8 @@ module GoPay
                 :email, :phone_number, :p1, :p2, :p3, :p4, :lang,
                 :session_state
 
+    attr_reader :recurrent_payment, :recurrence_date_to, :recurrence_cycle, :recurrence_period
+
     attr_accessor :payment_session_id, :response
 
     def create
@@ -55,7 +57,7 @@ module GoPay
        "failedURL" => GoPay.configuration.failed_url,
        "preAuthorization" => false,
        "defaultPaymentChannel" => default_payment_channel,
-       "recurrentPayment" => false,
+       "recurrentPayment" => !!recurrent_payment,
        "encryptedSignature" => GoPay::Crypt.encrypt(concat_payment_command),
        "customerData" => {
            "firstName" => first_name,
@@ -132,10 +134,10 @@ module GoPay
        GoPay.configuration.failed_url,
        GoPay.configuration.success_url,
        0, #preAuthorization
-       0, #recurrentPayment
-       nil, #recurrenceDateTo
-       nil, #recurrenceCycle
-       nil, #recurrencePeriod,
+       recurrent_payment ? 1 : 0, #recurrentPayment
+       recurrent_payment ? recurrence_date_to : nil, #recurrenceDateTo
+       recurrent_payment ? recurrence_cycle : nil, #recurrenceCycle
+       recurrent_payment ? recurrence_period : nil, #recurrencePeriod
        payment_channels,
        secure_key].map { |attr| attr.to_s }.join("|")
     end
