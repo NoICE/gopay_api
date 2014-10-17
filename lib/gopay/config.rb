@@ -1,3 +1,4 @@
+# encoding: utf-8
 require "yaml"
 
 module GoPay
@@ -61,10 +62,7 @@ module GoPay
     end
 
     def urls
-      env = @environment.nil? ? "test" : @environment.to_s
-      @urls[env]
+      @urls[@environment ? @environment.to_s : 'test']
     end
-
   end
-
 end

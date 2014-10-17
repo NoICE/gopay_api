@@ -1,5 +1,4 @@
-require "pp"
-
+# encoding: utf-8
 require "gopay/config"
 require "gopay/crypt"
 

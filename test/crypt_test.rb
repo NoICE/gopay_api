@@ -1,9 +1,7 @@
 require "test_helper"
 
 class CryptTest < Test::Unit::TestCase
-
   context "GoPay configured" do
-
     setup do
       GoPay.configuration.stubs(:goid).returns('1234567890')
       GoPay.configuration.stubs(:secure_key).returns('405ed9cacf63d5b123d65d09')
@@ -25,7 +23,5 @@ class CryptTest < Test::Unit::TestCase
       assert_equal "1fa2d2682dead62ba7bdb0f34ba304888f9cbb26df18b5a69d2cdeb73d7511b14791c68cc7eadb61",
                    GoPay::Crypt.encrypt(@base_payment.concat_payment_command)
     end
-
   end
-
 end

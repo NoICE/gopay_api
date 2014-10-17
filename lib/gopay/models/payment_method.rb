@@ -1,3 +1,4 @@
+# encoding: utf-8
 require "savon"
 
 module GoPay
@@ -19,6 +20,5 @@ module GoPay
         PaymentMethod.new(item)
       end
     end
-
   end
 end

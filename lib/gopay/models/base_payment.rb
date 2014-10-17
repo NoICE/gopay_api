@@ -1,7 +1,7 @@
+# encoding: utf-8
 require "savon"
 
 module GoPay
-
   class BasePayment
 
     def initialize(attributes = {})
@@ -170,7 +170,5 @@ module GoPay
       query_string = parameters.map { |key, value| "#{key}=#{value}" }.join("&")
       GoPay.configuration.urls["full_integration"] + "?" + query_string
     end
-
   end
-
 end

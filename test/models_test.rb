@@ -1,9 +1,8 @@
+# encoding: utf-8
 require "test_helper"
 
 class ModelsTest < Test::Unit::TestCase
-
   context "GoPay configured" do
-
     should "load payment methods" do
       assert GoPay::PaymentMethod.all.first.is_a?(GoPay::PaymentMethod)
     end
@@ -30,7 +29,6 @@ class ModelsTest < Test::Unit::TestCase
         assert @base_payment.load
         assert @base_payment.is_in_status?(GoPay::STATUSES[:created])
       end
-
     end
 
     context "when having test BasePayment with stubbed credentials" do
@@ -46,7 +44,6 @@ class ModelsTest < Test::Unit::TestCase
                                                :email => 'patrikjira@gmail.com')
       end
 
-
       should "validate base payment identity" do
         params = {'targetGoId' => GoPay.configuration.goid.to_s,
                   'orderNumber' => 'xxxxyyyy',
@@ -55,9 +52,6 @@ class ModelsTest < Test::Unit::TestCase
 
         assert @base_payment.valid_identity?(params, true)
       end
-
     end
-
   end
-
 end
